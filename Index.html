@@ -1,0 +1,61 @@
+import { useState } from "react"; import { Card, CardContent } from "@/components/ui/card"; import { Button } from "@/components/ui/button";
+
+export default function PrettyPicksSite(){ const [tab,setTab]=useState("home");
+
+const Section=({title,desc})=>( <Card className="shadow-xl rounded-2xl bg-pink-50"> <CardContent className="p-6 text-center"> <h2 className="text-2xl font-semibold text-pink-600 mb-2">{title}</h2> <p className="text-gray-600">{desc}</p> </CardContent> </Card> );
+
+return ( <div className="min-h-screen bg-gradient-to-b from-pink-100 to-white p-6">
+
+<h1 className="text-4xl font-bold text-center text-pink-600 mb-6">PrettyPicks</h1>
+  <p className="text-center text-gray-600 mb-8">Girlie Jewellery & Nails</p>
+
+  <div className="flex flex-wrap gap-3 justify-center mb-10">
+    <Button onClick={()=>setTab("home")}>Home</Button>
+    <Button onClick={()=>setTab("jewellery")}>Jewellery</Button>
+    <Button onClick={()=>setTab("nails")}>Nails</Button>
+    <Button onClick={()=>setTab("other")}>Other Products</Button>
+    <Button onClick={()=>setTab("contact")}>Contact</Button>
+  </div>
+
+  {tab==="home" && (
+    <Section
+      title="Welcome to PrettyPicks ✨"
+      desc="Cute, girly jewellery and stylish press-on nails made to make you feel pretty every day."
+    />
+  )}
+
+  {tab==="jewellery" && (
+    <Section
+      title="Jewellery Collection 💍"
+      desc="Browse our beautiful jewellery pieces. New designs are added regularly so stay tuned!"
+    />
+  )}
+
+  {tab==="nails" && (
+    <Section
+      title="Press-On Nails 💅"
+      desc="Trendy and aesthetic press-on nails perfect for every occasion."
+    />
+  )}
+
+  {tab==="other" && (
+    <Section
+      title="Other Products 🎀"
+      desc="More cute items coming soon! Check this section for new girly accessories."
+    />
+  )}
+
+  {tab==="contact" && (
+    <Card className="shadow-xl rounded-2xl bg-pink-50">
+      <CardContent className="p-6 text-center">
+        <h2 className="text-2xl font-semibold text-pink-600 mb-2">Contact Us</h2>
+        <p className="text-gray-600">Order through Instagram or WhatsApp</p>
+        <p className="mt-3">Instagram: @prettypicks</p>
+        <p>WhatsApp: Your Number</p>
+      </CardContent>
+    </Card>
+  )}
+
+</div>
+
+); }
